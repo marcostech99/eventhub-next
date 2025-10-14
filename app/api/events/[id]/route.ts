@@ -1,12 +1,13 @@
-import { fetchEventById } from '@/lib/api/ticketmaster';
 import { NextRequest, NextResponse } from 'next/server';
+import { fetchEventById } from '@/lib/api/ticketmaster';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    // ✅ Agora params é uma Promise, precisa do await
+    const { id } = await params;
 
     if (!id) {
       return NextResponse.json(
@@ -15,8 +16,10 @@ export async function GET(
       );
     }
 
+    // Busca o evento específico
     const event = await fetchEventById(id);
 
+    // Retorna os dados com cache headers
     return NextResponse.json(event, {
       status: 200,
       headers: {

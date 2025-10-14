@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEventStore } from '@/store/eventStore';
 import {
@@ -66,10 +67,12 @@ const EventDetailsView = ({ event, styles }: EventDetailsViewProps) => {
       </button>
 
       <div className={styles['event-hero']}>
-        <img 
+        <Image 
           src={eventImage} 
           alt={event.name}
           className={styles['event-hero-image']}
+          width={500} // Placeholder, adjust as needed
+          height={300} // Placeholder, adjust as needed
         />
         <div className={styles['event-hero-overlay']}>
           <div className={styles['event-hero-content']}>
@@ -191,10 +194,12 @@ const EventDetailsView = ({ event, styles }: EventDetailsViewProps) => {
           {event.seatmap?.staticUrl && (
             <div className={styles['seatmap-card']}>
               <h3>Mapa de Assentos</h3>
-              <img 
+              <Image 
                 src={event.seatmap.staticUrl}
                 alt="Mapa de assentos"
                 className={styles['seatmap-image']}
+                width={400} // Placeholder, adjust as needed
+                height={200} // Placeholder, adjust as needed
               />
             </div>
           )}

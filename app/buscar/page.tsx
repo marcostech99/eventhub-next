@@ -108,10 +108,14 @@ export default async function SearchPage({ searchParams }: PageProps) {
     <div className={styles['search-page']}>
       <div className={styles['search-header']}>
         <h1>Buscar Eventos</h1>
-        <SearchBar />
+        <Suspense fallback={<div>Loading SearchBar...</div>}>
+          <SearchBar />
+        </Suspense>
       </div>
 
-      <EventFilters />
+      <Suspense fallback={<div>Loading Filters...</div>}>
+        <EventFilters />
+      </Suspense>
       
       <Suspense fallback={
         <div className="loading-container">

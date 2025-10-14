@@ -12,20 +12,25 @@ interface SavedEventsState {
 }
 
 const getInitialSavedEvents = (): Event[] => {
-  try {
-    const storedEvents = localStorage.getItem('savedEvents');
-    return storedEvents ? JSON.parse(storedEvents) : [];
-  } catch (error) {
-    console.error('Failed to load saved events from localStorage', error);
-    return [];
+  if (typeof window !== 'undefined') {
+    try {
+      const storedEvents = localStorage.getItem('savedEvents');
+      return storedEvents ? JSON.parse(storedEvents) : [];
+    } catch (error) {
+      console.error('Failed to load saved events from localStorage', error);
+      return [];
+    }
   }
+  return [];
 };
 
 const updateLocalStorage = (events: Event[]) => {
-  try {
-    localStorage.setItem('savedEvents', JSON.stringify(events));
-  } catch (error) {
-    console.error('Failed to save events to localStorage', error);
+  if (typeof window !== 'undefined') {
+    try {
+      localStorage.setItem('savedEvents', JSON.stringify(events));
+    } catch (error) {
+      console.error('Failed to save events to localStorage', error);
+    }
   }
 };
 

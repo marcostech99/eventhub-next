@@ -3,6 +3,7 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import styles from './EventFilters.module.css';
+import { Button } from '@/components/ui/Button';
 
 const CATEGORIES = [
   { value: '', label: 'Todas as categorias' },
@@ -83,18 +84,18 @@ const EventFilters = () => {
   return (
     <div className={styles['event-filters']}>
       <div className={styles['filters-header']}>
-        <button 
+        <Button 
           className={styles['toggle-filters-btn']}
           onClick={() => setShowFilters(!showFilters)}
         >
           {showFilters ? '▼' : '▶'} Filtros
           {hasActiveFilters && <span className={styles['active-indicator']}>•</span>}
-        </button>
+        </Button>
         
         {hasActiveFilters && (
-          <button className={styles['reset-filters-btn']} onClick={handleReset}>
+          <Button className={styles['reset-filters-btn']} onClick={handleReset}>
             Limpar filtros
-          </button>
+          </Button>
         )}
       </div>
 

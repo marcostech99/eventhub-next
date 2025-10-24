@@ -15,6 +15,7 @@ import {
   CountdownResult
 } from '@/lib/utils/helpers';
 import { Event } from '@/types/event';
+import { Button } from '@/components/ui/Button';
 
 interface EventDetailsViewProps {
   event: Event;
@@ -62,9 +63,9 @@ const EventDetailsView = ({ event, styles }: EventDetailsViewProps) => {
 
   return (
     <div className={styles['event-details-page']}>
-      <button onClick={() => router.back()} className={styles['back-button']}>
+      <Button onClick={() => router.back()} className={styles['back-button']}>
         ← Voltar
-      </button>
+      </Button>
 
       <div className={styles['event-hero']}>
         <Image 
@@ -172,12 +173,12 @@ const EventDetailsView = ({ event, styles }: EventDetailsViewProps) => {
 
         <div className={styles['event-sidebar']}>
           <div className={styles['action-card']}>
-            <button 
+            <Button 
               className={`${styles['save-button-large']} ${isSaved ? styles['saved'] : ''}`}
               onClick={handleSaveToggle}
             >
               {isSaved ? '❤️ Salvo nos favoritos' : '🤍 Salvar evento'}
-            </button>
+            </Button>
 
             {event.url && (
               <a 

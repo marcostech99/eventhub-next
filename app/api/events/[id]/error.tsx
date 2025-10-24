@@ -3,6 +3,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
 
 export default function EventError({
   error,
@@ -25,12 +26,9 @@ export default function EventError({
           {error.message || 'Ocorreu um erro ao carregar os detalhes do evento.'}
         </p>
         <div className="flex gap-4 justify-center">
-          <button
-            onClick={reset}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
+          <Button onClick={reset} className="retry-button">
             Tentar novamente
-          </button>
+          </Button>
           <Link
             href="/"
             className="px-6 py-3 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors"

@@ -13,6 +13,7 @@ import {
   getEventStatus 
 } from '@/lib/utils'; // Assuming utils are in lib
 import styles from './EventCard.module.css';
+import { Button } from '@/components/ui/Button';
 
 interface EventCardProps {
   event: Event;
@@ -64,13 +65,13 @@ const EventCard = ({ event }: EventCardProps) => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {hasMounted && (
-          <button
+          <Button
             className={`${styles['save-button']} ${isSaved ? styles['saved'] : ''}`}
             onClick={handleSaveToggle}
             aria-label={isSaved ? 'Remover dos favoritos' : 'Salvar evento'}
           >
             {isSaved ? '❤️' : '🤍'}
-          </button>
+          </Button>
         )}
         <span className={`${styles['status-badge']} ${styles[`status-${statusClass}`]}`}>
           {eventStatus}

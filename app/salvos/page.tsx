@@ -5,6 +5,7 @@ import { useEventStore } from '@/store/eventStore';
 import EventCard from '@/components/ui/EventCard';
 import styles from './page.module.css';
 import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/Button';
 
 const SavedEventsPage = () => {
   const { savedEvents, clearSavedEvents, maxEvents } = useEventStore();
@@ -36,12 +37,12 @@ const SavedEventsPage = () => {
         </div>
         
         {isClient && savedEvents.length > 0 && (
-          <button 
+          <Button 
             onClick={handleClearAll}
             className={styles['clear-all-button']}
           >
             Limpar todos
-          </button>
+          </Button>
         )}
       </div>
 

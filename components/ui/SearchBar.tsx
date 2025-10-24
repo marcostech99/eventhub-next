@@ -3,6 +3,7 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import styles from './SearchBar.module.css';
+import { Button } from '@/components/ui/Button';
 
 const SearchBar = () => {
   const router = useRouter();
@@ -65,14 +66,14 @@ const SearchBar = () => {
           aria-label="Buscar eventos"
         />
         {searchTerm && (
-          <button
+          <Button
             type="button"
             className={styles['clear-button']}
             onClick={handleClear}
             aria-label="Limpar busca"
           >
             ✕
-          </button>
+          </Button>
         )}
       </div>
     </form>
